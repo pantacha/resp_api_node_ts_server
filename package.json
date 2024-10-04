@@ -1,0 +1,16 @@
+{
+  "name": "rest_api_node_ts_server",
+  "version": "1.0.0",
+  "description": "REST API´s with Express & TS",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --exec ts-node src/index.ts"
+  },
+  "author": "Jorge Ruiz Zugazua",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.7",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.2"
+  }
+}
