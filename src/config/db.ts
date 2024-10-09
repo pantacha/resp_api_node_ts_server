@@ -1,4 +1,4 @@
-import { Sequelize } from "sequelize";
+import { Sequelize } from "sequelize-typescript";
 import dotenv from 'dotenv';
 
 dotenv.config() // Cargar las variables de entorno desde el archivo .env
@@ -8,7 +8,8 @@ const db = new Sequelize(process.env.DATABASE_URL, {
         ssl: {
             require: false
         }
-    }
+    },
+    models: [__dirname + '/../models/**/*.ts']
 });
 
 export default db
