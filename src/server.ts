@@ -10,7 +10,7 @@ async function connectDB(){ // Conectar a la BD
     try {
         await db.authenticate();
         await db.sync();
-        console.log('Connection has been established successfully.');
+        // console.log('Connection has been established successfully.');
     } catch (error) {
         console.error('Unable to connect to the database:', error);
     }
@@ -18,5 +18,9 @@ async function connectDB(){ // Conectar a la BD
 connectDB();
 
 server.use('/api/products', router)
+
+server.get('/api', (req, resp) => {  // ENTORNO TESTING, consultas externas como APIs con superTest
+    resp.json({msg: 'Desde API'})
+})
 
 export default server
