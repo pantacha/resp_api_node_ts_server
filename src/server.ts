@@ -1,10 +1,31 @@
 import express from 'express';
+import cors, { CorsOptions } from 'cors';
+
 import router from './router';
 import db from './config/db';
 import swaggerUi from 'swagger-ui-express';
 import swaggerSpec, { swaggerUiOptions } from './config/swagger';
 
 const server = express(); // Instancia de Express
+
+const corsOption: CorsOptions = { // Permitir conexiones
+    origin: (origin, callback) => {
+
+        if(!origin) return callback(null, true); // Allow requests by no origin (like mobil apps or curl requests)
+
+        const allowedOrigins = [ // List of allowed origins
+            process.env.FRONTEND_URL,
+        ];
+
+        if(allowedOrigins.includes('origin')){
+            callback(null, true); // Allow the request
+        }else{
+            callback(new Error('Not allowed by CORS')); // Deny the request 
+        }
+    }
+}
+
+server.use(cors(corsOption)); // Enable cors with the defined options
 
 server.use(express.json()); // Leer datos de formularios
 
