@@ -47,6 +47,6 @@ The backend API uses **Swagger** to provide detailed API documentation. This doc
 
 ### How to Use Swagger for Documentation
 
-1. **Open your browser**: Navigate to [http://localhost:3001/docs](http://localhost:3456/docs).
+1. **Open your browser**: Navigate to [http://localhost:3456/docs](http://localhost:3456/docs).
 
 This will take you to the Swagger UI, where you can explore and interact with the API endpoints.
