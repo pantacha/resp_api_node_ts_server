@@ -12,7 +12,6 @@ Before you begin, make sure you have the following requirements installed:
 
 - **Node.js** (v14 or higher)
 - **npm** (v6 or higher)
-- **PostgreSQL** (v12 or higher)
 
 ## Installation
 
