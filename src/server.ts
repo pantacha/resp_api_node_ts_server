@@ -1,9 +1,10 @@
 import express from 'express';
 import cors, { CorsOptions } from 'cors';
+import morgan from 'morgan';
 
 import router from './router';
 import db from './config/db';
-import swaggerUi from 'swagger-ui-express';
+import swaggerUi, { serve } from 'swagger-ui-express';
 import swaggerSpec, { swaggerUiOptions } from './config/swagger';
 
 const server = express(); // Instancia de Express
@@ -17,7 +18,7 @@ const corsOption: CorsOptions = { // Permitir conexiones
             process.env.FRONTEND_URL,
         ];
 
-        if(allowedOrigins.includes('origin')){
+        if(allowedOrigins.includes(origin)){
             callback(null, true); // Allow the request
         }else{
             callback(new Error('Not allowed by CORS')); // Deny the request 
@@ -39,6 +40,8 @@ async function connectDB(){ // Conectar a la BD
     }
 }
 connectDB();
+
+server.use(morgan('dev'));
 
 server.use('/api/products', router)
 

@@ -22,7 +22,9 @@ export const getProductById = async (req: Request, resp: Response) => {
 
 export const getAllProducts = async (req: Request, resp: Response) => {
     try {
-        const products = await Product.findAll();
+        const products = await Product.findAll({
+            order: ['id']
+        });
         return resp.status(200).json({data: products});
     } catch (error) {
         return resp.status(500).json({error: 'Internal Server Error', details: error.message})
